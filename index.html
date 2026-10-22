@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Altın Avcısı — 2 Oyunculu Yerel Kooperatif Web Oyunu</title>
+  <meta name="description" content="Klasik efsane Altın Avcısı (Gold Miner) 2 oyunculu yerel kooperatif web oyunu. Phaser 3, TypeScript ve Web Audio API ile geliştirilmiştir." />
+  <link rel="stylesheet" href="./src/style.css" />
+</head>
+<body>
+  <!-- Game Canvas Container -->
+  <main id="game-wrapper">
+    <div id="game-container"></div>
+  </main>
+
+  <!-- Mobile / Touch Controls -->
+  <div class="mobile-controls">
+    <button class="mobile-btn p1" id="btn-touch-p1">SOL P1 (S)</button>
+    <button class="mobile-btn p2" id="btn-touch-p2">SAĞ P2 (↓)</button>
+  </div>
+
+  <script type="module" src="./src/main.ts"></script>
+  <script>
+    // Dokunmatik butonlar için klavye olayı simülasyonu
+    document.getElementById('btn-touch-p1')?.addEventListener('pointerdown', (e) => {
+      e.preventDefault();
+      window.dispatchEvent(new KeyboardEvent('keydown', { key: 's', code: 'KeyS', bubbles: true }));
+    });
+
+    document.getElementById('btn-touch-p2')?.addEventListener('pointerdown', (e) => {
+      e.preventDefault();
+      window.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', code: 'ArrowDown', bubbles: true }));
+    });
+  </script>
+</body>
+</html>
