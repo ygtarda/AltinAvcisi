@@ -1,4 +1,4 @@
-# ⛏️ Altın Avcısı — 2 Oyunculu Yerel Kooperatif Web Oyunu
+# ⛏️ Altın Avcısı — 2 Oyunculu Yerel  Web Oyunu
 
 Nostaljik flash klasiği **Altın Avcısı (Gold Miner)** deneyimini modern web standartlarına, yüksek çözünürlüklü AAA grafiklere, harmonik sarkaç fizik motoruna ve iki oyunculu zengin kooperatif mekaniklerine taşıyan yeni nesil arcade web oyunu.
 
