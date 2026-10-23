@@ -186,24 +186,24 @@ export const GameConfig = {
     cart_diamond: {
       type: 'cart_diamond',
       textureKey: 'cart_diamond',
-      name: 'Elmas Vagonu',
-      width: 68,
-      height: 77,
+      name: 'Elmaslı Penguen',
+      width: 70,
+      height: 86,
       value: 300,
       weight: 3.0,
       baseProbability: 0,
-      description: 'Yatay devriye gezen elmas yüklü maden vagonu'
+      description: 'Kucağında parıldayan büyük elmas taşıyan hareketli sevimli penguen'
     },
     cart_tnt: {
       type: 'cart_tnt',
       textureKey: 'cart_tnt',
-      name: 'TNT Vagonu',
-      width: 68,
-      height: 83,
+      name: 'Dinamitli Penguen',
+      width: 70,
+      height: 86,
       value: -40,
       weight: 1.0,
       baseProbability: 0,
-      description: 'Yatay devriye gezen patlayıcı yüklü vagon'
+      description: 'Kucağında fitili ateşlenmiş dinamit taşıyan hareketli penguen'
     }
   } as Record<string, EntityTypeConfig>,
 
