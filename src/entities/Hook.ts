@@ -424,8 +424,12 @@ export class Hook {
     this.currentLength += speed * dt;
 
     const maxLen = this.getMaxLength();
-    if (this.currentLength >= maxLen) {
-      this.currentLength = maxLen;
+    const curTipX = this.pivotX + Math.sin(this.angle) * this.currentLength;
+    const curTipY = this.pivotY + Math.cos(this.angle) * this.currentLength;
+
+    // Maksimum menzil veya ekran kenar sınırlarına ulaşıldığında boş geri çekilmeye başla
+    if (this.currentLength >= maxLen || curTipX <= 18 || curTipX >= 1262 || curTipY >= 712) {
+      this.currentLength = Math.min(this.currentLength, maxLen);
       this.state = HookState.RETRACTING_EMPTY;
       this.setMinerState('crank');
     }

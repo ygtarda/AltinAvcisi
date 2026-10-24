@@ -12,6 +12,7 @@ export class MovingCart extends MiningEntity {
   public velocityX: number;
   private minX: number = 85;
   private maxX: number = 1195;
+  private waddleTween?: Phaser.Tweens.Tween;
 
   constructor(
     scene: Phaser.Scene,
@@ -27,15 +28,47 @@ export class MovingCart extends MiningEntity {
     this.velocityX = goRight ? speed : -speed;
     this.setFlipX(!goRight);
 
-    // Vagon ray tekerlek hafif tıkırtı sarsıntı animasyonu
-    scene.tweens.add({
+    // Penguen yürüyüş kare animasyonunu başlat
+    const animKey = config.type === 'cart_tnt' ? 'penguin_dynamite_walk' : 'penguin_diamond_walk';
+    if (scene.anims.exists(animKey)) {
+      this.play(animKey);
+      this.setDisplaySize(config.width, config.height);
+    }
+
+    // Penguen paytak adımlama ve tatlı yürüme sekme animasyonu
+    this.waddleTween = scene.tweens.add({
       targets: this,
       y: y + 2,
-      duration: 120,
+      angle: { from: -2, to: 2 },
+      duration: 130,
       yoyo: true,
       repeat: -1,
       ease: 'Sine.easeInOut'
     });
+  }
+
+  /**
+   * Kancaya yakalandığında yürüme sallantısını ve animasyonunu durdur
+   */
+  public override setGrabPosition(x: number, y: number): void {
+    if (this.waddleTween && this.waddleTween.isPlaying()) {
+      this.waddleTween.stop();
+      this.setAngle(0);
+    }
+    if (this.anims && this.anims.isPlaying) {
+      this.anims.stop();
+    }
+    super.setGrabPosition(x, y);
+  }
+
+  public override destroyEntity(): void {
+    if (this.waddleTween) {
+      this.waddleTween.stop();
+    }
+    if (this.anims && this.anims.isPlaying) {
+      this.anims.stop();
+    }
+    super.destroyEntity();
   }
 
   /**
@@ -59,7 +92,7 @@ export class MovingCart extends MiningEntity {
       this.setFlipX(true);
     }
 
-    // Gövde gölgesini de vagonla birlikte yürüt
+    // Gövde gölgesini de karakterle birlikte yürüt
     this.updateShadowPosition();
   }
 }

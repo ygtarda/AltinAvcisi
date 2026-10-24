@@ -59,8 +59,8 @@ export const GameConfig = {
 
   // Kanca Fiziği
   hook: {
-    maxSwingAngle: Math.PI / 3, // 60 derece
-    swingSpeed: 1.2,            // radyan / saniye
+    maxSwingAngle: (82 * Math.PI) / 180, // 82 derece (toplam ~164° salınım; 180'e yakın kör noktasız geniş açı)
+    swingSpeed: 1.25,           // radyan / saniye
     manualAimSpeed: 1.8,        // radyan / saniye (manuel nişan alma hızı)
     extendSpeed: 650,           // px / sn
     retractSpeedEmpty: 900,     // px / sn
@@ -187,8 +187,8 @@ export const GameConfig = {
       type: 'cart_diamond',
       textureKey: 'cart_diamond',
       name: 'Elmaslı Penguen',
-      width: 70,
-      height: 86,
+      width: 54,
+      height: 66,
       value: 300,
       weight: 3.0,
       baseProbability: 0,
@@ -198,8 +198,8 @@ export const GameConfig = {
       type: 'cart_tnt',
       textureKey: 'cart_tnt',
       name: 'Dinamitli Penguen',
-      width: 70,
-      height: 86,
+      width: 54,
+      height: 66,
       value: -40,
       weight: 1.0,
       baseProbability: 0,

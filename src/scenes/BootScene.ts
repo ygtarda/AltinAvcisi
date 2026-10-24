@@ -73,6 +73,13 @@ export class BootScene extends Phaser.Scene {
     this.load.image('tnt_barrel', 'assets/tnt_barrel.png');
     this.load.image('cart_diamond', 'assets/cart_diamond.png');
     this.load.image('cart_tnt', 'assets/cart_tnt.png');
+
+    // Penguen yürüyüş animasyon kareleri (4'er kare)
+    for (let i = 0; i < 4; i++) {
+      this.load.image(`penguin_diamond_${i}`, `assets/penguin_diamond_${i}.png`);
+      this.load.image(`penguin_dynamite_${i}`, `assets/penguin_dynamite_${i}.png`);
+    }
+
     this.load.image('shop_diamond_polish', 'assets/shop_diamond_polish.png');
     this.load.image('explosion_blast', 'assets/explosion_blast.png');
     this.load.image('mining_winch', 'assets/mining_winch.png');
@@ -87,6 +94,35 @@ export class BootScene extends Phaser.Scene {
   create(): void {
     // Parçacık dokuları üretimi
     TextureGenerator.generateAll(this);
+
+    // Penguen Yürüyüş Animasyonları
+    if (!this.anims.exists('penguin_diamond_walk')) {
+      this.anims.create({
+        key: 'penguin_diamond_walk',
+        frames: [
+          { key: 'penguin_diamond_0' },
+          { key: 'penguin_diamond_1' },
+          { key: 'penguin_diamond_2' },
+          { key: 'penguin_diamond_3' }
+        ],
+        frameRate: 6,
+        repeat: -1
+      });
+    }
+
+    if (!this.anims.exists('penguin_dynamite_walk')) {
+      this.anims.create({
+        key: 'penguin_dynamite_walk',
+        frames: [
+          { key: 'penguin_dynamite_0' },
+          { key: 'penguin_dynamite_1' },
+          { key: 'penguin_dynamite_2' },
+          { key: 'penguin_dynamite_3' }
+        ],
+        frameRate: 6,
+        repeat: -1
+      });
+    }
 
     // Audio Context başlatma
     AudioManager.getInstance();
